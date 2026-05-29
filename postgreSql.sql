@@ -137,9 +137,76 @@ where salary
  group by depart
  having sum(salary)>40000;
 
+drop table employee;
+
+show tables;
+
+create table employee(
+emp_id int,
+emp_name varchar(50),
+dept_id int,
+manager_id int
+);
+
+drop table department;
+
+create table department(
+dept_id int,
+dept_name name
+);
+
+insert into department
+values
+(1,'hr'),
+(2,'it'),
+(3,'finance'),
+(4,'marketing');
+
+insert into employee
+values
+(101,'ravi',1,null),
+(102,'kiran',2,101),
+(103,'anu',2,101),
+(104,'sai',null,102);
+
+select * from employee;
+
+select * from department;
+
+select e.emp_id,e.emp_name,d.dept_name from employee e
+inner join department d
+on e.dept_id=d.dept_id;
+
+select e.emp_id,e.emp_name,d.dept_name  from employee e
+left join department d
+on e.dept_id=d.dept_id;
+
+select e.emp_name,d.dept_name from employee e
+right join department d
+on e.dept_id=d.dept_id;
+
+select e.emp_name as Emp,m.emp_name as Manager from employee e
+left join employee m
+on e.emp_name=m.emp_name;
+
+create table color (
+color_name varchar(20)
+);
+
+create table sizes(
+size_name varchar(20)
+);
 
 
+insert into color values
+('red'),
+('blue');
 
+insert into sizes values
+('s'),
+('M');
 
+select * from color
+cross join  sizes
 
 
